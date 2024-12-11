@@ -5,137 +5,173 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {
   "new-york": {
-    "accordion": {
-      name: "accordion",
+    "field": {
+      name: "field",
+      description: "",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: ["registry/new-york/ui/accordion.tsx"],
-      component: React.lazy(() => import("@/registry/new-york/ui/accordion.tsx")),
+      files: [{
+        path: "registry/new-york/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/ui/field.tsx")),
       source: "",
-      category: "undefined",
-      subcategory: "undefined",
+      category: "",
+      subcategory: "",
       chunks: []
     },
-    "accordion-demo": {
-      name: "accordion-demo",
+    "field-demo": {
+      name: "field-demo",
+      description: "",
       type: "registry:example",
-      registryDependencies: ["accordion"],
-      files: ["registry/new-york/example/accordion-demo.tsx"],
-      component: React.lazy(() => import("@/registry/new-york/example/accordion-demo.tsx")),
+      registryDependencies: ["field"],
+      files: [{
+        path: "registry/new-york/example/field-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/new-york/example/field-demo.tsx")),
       source: "",
-      category: "undefined",
-      subcategory: "undefined",
+      category: "",
+      subcategory: "",
       chunks: []
     },
     "login-01": {
       name: "login-01",
+      description: "",
       type: "registry:block",
       registryDependencies: ["button","card","input","label"],
-      files: ["registry/new-york/block/login-01/page.tsx","registry/new-york/block/login-01/components/login-form.tsx"],
+      files: [{
+        path: "registry/new-york/block/login-01/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/new-york/block/login-01/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
       component: React.lazy(() => import("@/registry/new-york/block/login-01/page.tsx")),
       source: "__registry__/new-york/block/login-01/page.tsx",
       category: "Authentication",
       subcategory: "Login",
       chunks: []
     },
-    "authentication-01": {
-      name: "authentication-01",
-      type: "registry:block",
-      registryDependencies: ["button","card","input","label"],
-      files: ["registry/new-york/block/authentication-01.tsx"],
-      component: React.lazy(() => import("@/registry/new-york/block/authentication-01.tsx")),
-      source: "__registry__/new-york/block/authentication-01.tsx",
-      category: "Authentication",
-      subcategory: "Login",
-      chunks: []
-    },
     "utils": {
       name: "utils",
+      description: "",
       type: "registry:lib",
       registryDependencies: undefined,
-      files: ["registry/new-york/lib/utils.ts"],
+      files: [{
+        path: "registry/new-york/lib/utils.ts",
+        type: "registry:lib",
+        target: ""
+      }],
       component: React.lazy(() => import("@/registry/new-york/lib/utils.ts")),
       source: "",
-      category: "undefined",
-      subcategory: "undefined",
+      category: "",
+      subcategory: "",
       chunks: []
     },
     "use-mobile": {
       name: "use-mobile",
+      description: "",
       type: "registry:hook",
       registryDependencies: undefined,
-      files: ["registry/new-york/hooks/use-mobile.tsx"],
+      files: [{
+        path: "registry/new-york/hooks/use-mobile.tsx",
+        type: "registry:hook",
+        target: ""
+      }],
       component: React.lazy(() => import("@/registry/new-york/hooks/use-mobile.tsx")),
       source: "",
-      category: "undefined",
-      subcategory: "undefined",
+      category: "",
+      subcategory: "",
       chunks: []
     },
   },  "default": {
-    "accordion": {
-      name: "accordion",
+    "field": {
+      name: "field",
+      description: "",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: ["registry/default/ui/accordion.tsx"],
-      component: React.lazy(() => import("@/registry/default/ui/accordion.tsx")),
+      files: [{
+        path: "registry/default/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/ui/field.tsx")),
       source: "",
-      category: "undefined",
-      subcategory: "undefined",
+      category: "",
+      subcategory: "",
       chunks: []
     },
-    "accordion-demo": {
-      name: "accordion-demo",
+    "field-demo": {
+      name: "field-demo",
+      description: "",
       type: "registry:example",
-      registryDependencies: ["accordion"],
-      files: ["registry/default/example/accordion-demo.tsx"],
-      component: React.lazy(() => import("@/registry/default/example/accordion-demo.tsx")),
+      registryDependencies: ["field"],
+      files: [{
+        path: "registry/default/example/field-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      component: React.lazy(() => import("@/registry/default/example/field-demo.tsx")),
       source: "",
-      category: "undefined",
-      subcategory: "undefined",
+      category: "",
+      subcategory: "",
       chunks: []
     },
     "login-01": {
       name: "login-01",
+      description: "",
       type: "registry:block",
       registryDependencies: ["button","card","input","label"],
-      files: ["registry/default/block/login-01/page.tsx","registry/default/block/login-01/components/login-form.tsx"],
+      files: [{
+        path: "registry/default/block/login-01/page.tsx",
+        type: "registry:page",
+        target: "app/login/page.tsx"
+      },{
+        path: "registry/default/block/login-01/components/login-form.tsx",
+        type: "registry:component",
+        target: ""
+      }],
       component: React.lazy(() => import("@/registry/default/block/login-01/page.tsx")),
       source: "__registry__/default/block/login-01/page.tsx",
       category: "Authentication",
       subcategory: "Login",
       chunks: []
     },
-    "authentication-01": {
-      name: "authentication-01",
-      type: "registry:block",
-      registryDependencies: ["button","card","input","label"],
-      files: ["registry/default/block/authentication-01.tsx"],
-      component: React.lazy(() => import("@/registry/default/block/authentication-01.tsx")),
-      source: "__registry__/default/block/authentication-01.tsx",
-      category: "Authentication",
-      subcategory: "Login",
-      chunks: []
-    },
     "utils": {
       name: "utils",
+      description: "",
       type: "registry:lib",
       registryDependencies: undefined,
-      files: ["registry/default/lib/utils.ts"],
+      files: [{
+        path: "registry/default/lib/utils.ts",
+        type: "registry:lib",
+        target: ""
+      }],
       component: React.lazy(() => import("@/registry/default/lib/utils.ts")),
       source: "",
-      category: "undefined",
-      subcategory: "undefined",
+      category: "",
+      subcategory: "",
       chunks: []
     },
     "use-mobile": {
       name: "use-mobile",
+      description: "",
       type: "registry:hook",
       registryDependencies: undefined,
-      files: ["registry/default/hooks/use-mobile.tsx"],
+      files: [{
+        path: "registry/default/hooks/use-mobile.tsx",
+        type: "registry:hook",
+        target: ""
+      }],
       component: React.lazy(() => import("@/registry/default/hooks/use-mobile.tsx")),
       source: "",
-      category: "undefined",
-      subcategory: "undefined",
+      category: "",
+      subcategory: "",
       chunks: []
     },
   },

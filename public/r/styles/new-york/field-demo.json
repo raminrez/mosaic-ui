@@ -1,0 +1,15 @@
+{
+  "name": "field-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "field"
+  ],
+  "files": [
+    {
+      "path": "example/field-demo.tsx",
+      "content": "import { Field } from \"@/registry/default/ui/field\";\n\nexport default function AccordionDemo() {\n  return <Field />;\n}\n",
+      "type": "registry:example",
+      "target": ""
+    }
+  ]
+}

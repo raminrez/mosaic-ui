@@ -30,6 +30,9 @@ importers:
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       tsx:
         specifier: ^4.19.2
         version: 4.19.2

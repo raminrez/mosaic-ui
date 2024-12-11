@@ -1,0 +1,16 @@
+{
+  "name": "field",
+  "type": "registry:ui",
+  "dependencies": [
+    "react-hook-form",
+    "zod"
+  ],
+  "files": [
+    {
+      "path": "ui/field.tsx",
+      "content": "import React, { useEffect } from \"react\";\nimport { useFormContext } from \"react-hook-form\";\nimport {\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/components/ui\";\nimport type { FieldProps } from \"./field.types\";\nimport type { z } from \"zod\";\n\nexport type FieldProps = {\n  name: string;\n  label?: string;\n  helperText?: string;\n  onChange?: (e: React.ChangeEvent<any>) => void;\n  validation?: z.ZodType<any, any>;\n  className?: string;\n  defaultValue?: any;\n  children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;\n};\n\nconst Field: React.FC<FieldProps> = ({\n  name,\n  label,\n  helperText,\n  children,\n  validation,\n  onChange,\n  className,\n  defaultValue,\n}) => {\n  const formCTX = useFormContext();\n\n  if (!formCTX) {\n    throw new Error(\n      \"The Field component only works only works in FormProvider component!\"\n    );\n  }\n\n  useEffect(() => {\n    if (defaultValue !== undefined) {\n      formCTX.setValue(name, defaultValue, {\n        shouldValidate: true,\n        shouldDirty: true,\n      });\n    }\n  }, [defaultValue, name, formCTX.setValue, formCTX.getValues]);\n\n  // @ts-expect-error TODO: Fix the type later\n  const validate = (value) => {\n    if (validation) {\n      const result = validation.safeParse(value);\n      if (!result.success) {\n        return result.error.errors[0].message;\n      }\n    }\n    return true;\n  };\n\n  return (\n    <div className={className}>\n      <FormField\n        control={formCTX.control}\n        name={name}\n        rules={{ validate }}\n        render={({ field }) => (\n          <FormItem>\n            {label && <FormLabel>{label}</FormLabel>}\n            <FormControl>\n              {React.cloneElement(children, {\n                ...children.props,\n                ...field,\n                onChange: (e: React.ChangeEvent<any>) => {\n                  field.onChange(e);\n                  if (onChange) {\n                    onChange(e);\n                  }\n                  if (children.props.onChange) {\n                    children.props.onChange(e);\n                  }\n                },\n              })}\n            </FormControl>\n            {helperText && <FormDescription>{helperText}</FormDescription>}\n            <FormMessage />\n          </FormItem>\n        )}\n      />\n    </div>\n  );\n};\n\nField.displayName = \"Field\";\n\nexport { Field };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

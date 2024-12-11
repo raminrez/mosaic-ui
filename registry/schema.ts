@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod";
 
 export const blockChunkSchema = z.object({
   name: z.string(),
@@ -11,7 +11,7 @@ export const blockChunkSchema = z.object({
       className: z.string().nullish(),
     })
     .optional(),
-})
+});
 
 export const registryItemTypeSchema = z.enum([
   "registry:style",
@@ -23,17 +23,14 @@ export const registryItemTypeSchema = z.enum([
   "registry:hook",
   "registry:theme",
   "registry:page",
-])
+]);
 
-export const registryItemFileSchema = z.union([
-  z.string(),
-  z.object({
-    path: z.string(),
-    content: z.string().optional(),
-    type: registryItemTypeSchema,
-    target: z.string().optional(),
-  }),
-])
+export const registryItemFileSchema = z.object({
+  path: z.string(),
+  content: z.string().optional(),
+  type: registryItemTypeSchema,
+  target: z.string().optional(),
+});
 
 export const registryItemTailwindSchema = z.object({
   config: z.object({
@@ -41,14 +38,14 @@ export const registryItemTailwindSchema = z.object({
     theme: z.record(z.string(), z.any()).optional(),
     plugins: z.array(z.string()).optional(),
   }),
-})
+});
 
 export const registryItemCssVarsSchema = z.object({
   light: z.record(z.string(), z.string()).optional(),
   dark: z.record(z.string(), z.string()).optional(),
-})
+});
 
-export const registryEntrySchema = z.object({
+export const registryItemSchema = z.object({
   name: z.string(),
   type: registryItemTypeSchema,
   description: z.string().optional(),
@@ -58,17 +55,20 @@ export const registryEntrySchema = z.object({
   files: z.array(registryItemFileSchema).optional(),
   tailwind: registryItemTailwindSchema.optional(),
   cssVars: registryItemCssVarsSchema.optional(),
-  source: z.string().optional(),
+  meta: z.record(z.string(), z.any()).optional(),
+  docs: z.string().optional(),
+});
+
+export const registryEntrySchema = registryItemSchema.extend({
   category: z.string().optional(),
   subcategory: z.string().optional(),
-  chunks: z.array(blockChunkSchema).optional(),
-})
+});
 
-export const registrySchema = z.array(registryEntrySchema)
+export const registrySchema = z.array(registryEntrySchema);
 
-export type RegistryEntry = z.infer<typeof registryEntrySchema>
+export type RegistryEntry = z.infer<typeof registryEntrySchema>;
 
-export type Registry = z.infer<typeof registrySchema>
+export type Registry = z.infer<typeof registrySchema>;
 
 export const blockSchema = registryEntrySchema.extend({
   type: z.literal("registry:block"),
@@ -82,8 +82,8 @@ export const blockSchema = registryEntrySchema.extend({
     .optional(),
   code: z.string(),
   highlightedCode: z.string(),
-})
+});
 
-export type Block = z.infer<typeof blockSchema>
+export type Block = z.infer<typeof blockSchema>;
 
-export type BlockChunk = z.infer<typeof blockChunkSchema>
+export type BlockChunk = z.infer<typeof blockChunkSchema>;
